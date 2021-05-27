@@ -11,7 +11,7 @@ COPY . .$MODULE_PATH
 RUN npm i
 RUN ls -a
 RUN npm run build
-#
+
 FROM node:16-alpine
 
 ARG port=8080
