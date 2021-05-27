@@ -15,3 +15,4 @@ jobs:
               uses: adamzolyak/monorepo-pr-labeler-action@patching
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BASE_DIRS: "packages/service1|packages/service2"
