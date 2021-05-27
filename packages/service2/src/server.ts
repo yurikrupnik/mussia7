@@ -41,7 +41,7 @@ function api() {
      */
     route.get("/", (req, res) => {
         res.status(200).json({
-            message: "service 2 response!"
+            message: "service 2 res"
         });
     });
 
