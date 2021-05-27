@@ -15,7 +15,6 @@ import swaggerUi from "swagger-ui-express";
 //     apis: ["./src/server.ts"] // files containing annotations as above
 // };
 
-// console.log("swaggerJsdoc", swaggerJsdoc);
 
 // const openapiSpecification = swaggerJsdoc(options);
 // console.log("openapiSpecification", openapiSpecification);
