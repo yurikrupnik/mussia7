@@ -7,7 +7,7 @@ ARG modulePath=.
 ENV MODULE_PATH=$modulePath
 
 COPY . .$MODULE_PATH
-#COPY . .
+
 RUN npm i
 RUN ls -a
 RUN npm run build
