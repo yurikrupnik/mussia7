@@ -15,10 +15,6 @@ import swaggerUi from "swagger-ui-express";
 //     apis: ["./src/server.ts"] // files containing annotations as above
 // };
 
-
-// const openapiSpecification = swaggerJsdoc(options);
-// console.log("openapiSpecification", openapiSpecification);
-
 const app = express();
 
 function api() {
@@ -45,7 +41,7 @@ function api() {
      */
     route.get("/", (req, res) => {
         res.status(200).json({
-            message: "service 2 response"
+            message: "service 2 response!"
         });
     });
 
