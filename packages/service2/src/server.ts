@@ -15,8 +15,6 @@ import swaggerUi from "swagger-ui-express";
 //     apis: ["./src/server.ts"] // files containing annotations as above
 // };
 
-
-
 const app = express();
 
 function api() {
