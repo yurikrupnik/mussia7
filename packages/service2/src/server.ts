@@ -16,8 +16,6 @@ import swaggerUi from "swagger-ui-express";
 // };
 
 
-// const openapiSpecification = swaggerJsdoc(options);
-// console.log("openapiSpecification", openapiSpecification);
 
 const app = express();
 
