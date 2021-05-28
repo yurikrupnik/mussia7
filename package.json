@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/yurikrupnik/mussia7#readme",
   "devDependencies": {
-    "@babel/preset-env": "7.14.2",
+    "@babel/preset-env": "7.14.4",
     "@babel/preset-react": "7.13.13",
     "@babel/preset-typescript": "7.13.0",
     "@types/jest": "26.0.23",
