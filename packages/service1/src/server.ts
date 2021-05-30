@@ -122,7 +122,7 @@ function api() {
 
 function swaggerUI(url: string) {
     // todo module
-    console.log('os.hostname()', os.hostname())
+    console.log('os.hostname()', os.hostname()) // eslint-disable-line
     const r = Router();
     r.get("/swagger", (req, res) => {
         res.header("Content-Type", "application/json");
