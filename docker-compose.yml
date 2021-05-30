@@ -89,7 +89,7 @@ services:
                 - modulePath=/packages/service2
         container_name: service2
         environment:
-            - PORT=5001
+            - PORT=5002
             - NODE_ENV_DOCKER=true
             - DB_USER=admin
             - MONGODB_URI=mongodb://0.0.0.0/jarvis

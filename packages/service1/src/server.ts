@@ -1,4 +1,5 @@
 import express, { Router } from "express";
+import os from "os";
 import path from "path";
 import swaggerUi from "swagger-ui-express";
 // import * as swaggerJsdoc from "swagger-jsdoc";
@@ -121,6 +122,7 @@ function api() {
 
 function swaggerUI(url: string) {
     // todo module
+    console.log('os.hostname()', os.hostname())
     const r = Router();
     r.get("/swagger", (req, res) => {
         res.header("Content-Type", "application/json");
@@ -148,7 +150,7 @@ app.use((req, res, next) => {
     next();
     // swaggerUI(req.hostname);
 });
-app.use(swaggerUI("http://localhost:8080"));
+app.use(swaggerUI("http://localhost:5001"));
 
 app.use(api());
 // const route = Router();

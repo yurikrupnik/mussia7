@@ -1,54 +1,13 @@
 steps:
-#    - name: node
-#      entrypoint: "npm"
-#      args: ["ci"]
-#      id: ci
-    #  - name: 'gcr.io/cloud-builders/gcloud'
-    #    args:
-    #      - app
-    #      - deploy
-    #      - [FUNCTION_NAME]
-    #      - --source=.
-    #      - --trigger-httpd
-
-    #  - name: 'node:12.10.0'
-    #    args: ['run', 'postinstall']
-    #    entrypoint: 'npm'
-    #    id: post-install
-    #    waitFor:
-    #      - ci
-    #  - name: 'node:12.10.0'
-    #    args: ['npx', 'lerna', 'changed']
-    #    id: lerna
-    #    waitFor:
-    #      - ci
-    #  - name: 'node:12.10.0'
-    #    args: ['run', 'lint', '--', '--since']
-    #    entrypoint: 'npm'
-    #    id: lint
-    #    waitFor:
-    #      - ci
-    #  - name: 'node:12.10.0'
-    #    args: ['run', 'test', '--', '--since']
-    #    entrypoint: 'npm'
-    #    id: test
-    #    waitFor:
-    #      - post-install
-    #  - name: 'node:12.10.0'
-    #    args: ['run', 'build', '--', '--since']
-    #    entrypoint: 'npm'
-    #    id: build
-    #    waitFor:
-    #      - post-install
     - name: gcr.io/cloud-builders/docker
       args:
           - build
-          - ./packages/services/billing
+          - ./packages/services/service1
           - "-t"
           - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
 #          - packages/services/billing
           - "--build-arg"
-          - modulePath=/packages/services/billing
+          - modulePath=/packages/services/service1
       id: Build
     - name: gcr.io/cloud-builders/docker
       args:
@@ -68,14 +27,9 @@ steps:
           - "--quiet"
       id: Deploy
       entrypoint: gcloud
-#  - name: 'node:12.10.0'
-#    args: ['run', 'build', '--', '--since']
-#    entrypoint: 'npm'
-#    waitFor:
-#      - build
 
 substitutions:
-    _NODE_VERSION: 16.10.0 #default value
+    _NODE_VERSION: 16.2.0 #default value
     _GCR_HOSTNAME: eu.gcr.io
     _PLATFORM: managed
     _SERVICE_NAME: billing
