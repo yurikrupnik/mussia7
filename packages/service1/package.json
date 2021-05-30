@@ -17,7 +17,7 @@
   },
   "config": {
     "port": 5000,
-    "modulePath": "/packages/services/billing"
+    "modulePath": "/packages/service1"
   },
   "scripts": {
     "dev": "webpack --config=../../webpack.config.server.js -w --color",

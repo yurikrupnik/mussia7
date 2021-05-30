@@ -63,7 +63,7 @@ services:
 #            - 5000:5000
 #        command: npm run start
     service1:
-        image: gcr.io/mussia6/service1
+        image: gcr.io/mussia7/service1
         build:
             context: packages/service1
             dockerfile: Dockerfile
@@ -81,7 +81,7 @@ services:
             - 5001:5001
         command: npm run start
     service2:
-        image: gcr.io/mussia6/service2
+        image: gcr.io/mussia7/service2
         build:
             context: packages/service2
             dockerfile: Dockerfile
