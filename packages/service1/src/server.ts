@@ -46,7 +46,7 @@ function api() {
      */
     route.get("/", (req, res) => {
         res.status(200).json({
-            message: "service 1 response1"
+            message: "service 1 bb"
         });
     });
 
