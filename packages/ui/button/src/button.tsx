@@ -37,7 +37,7 @@ const Button: React.FC<Props> = (props: Props) => {
     // return <Bu data={[]} />;
     return (
         <button type="button" onClick={onClick} className={styles.root}>
-            My Buttons sds
+            My Buttons da
         </button>
     );
 };
