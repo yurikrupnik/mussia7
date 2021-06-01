@@ -17,7 +17,6 @@ function respondWithResult<T>(res: Response) {
         if (!entity) {
             console.log("null entitiy fix error", entity); // eslint-disable-line
             // res.statusCode = 404;
-            // res.statusMessage = "aris";
             // res.end();
             res.status(200).json(null);
         } else {
