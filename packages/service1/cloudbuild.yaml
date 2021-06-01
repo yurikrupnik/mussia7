@@ -2,12 +2,12 @@ steps:
     - name: gcr.io/cloud-builders/docker
       args:
           - build
-          - ./packages/services/service1
+          - ./packages/service1
           - "-t"
           - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
-#          - packages/services/billing
+          #          - packages/services/billing
           - "--build-arg"
-          - modulePath=/packages/services/service1
+          - modulePath=/packages/service1
       id: Build
     - name: gcr.io/cloud-builders/docker
       args:
@@ -32,7 +32,7 @@ substitutions:
     _NODE_VERSION: 16.2.0 #default value
     _GCR_HOSTNAME: eu.gcr.io
     _PLATFORM: managed
-    _SERVICE_NAME: billing
+    _SERVICE_NAME: service1
     _DEPLOY_REGION: europe-west1
 #    _LABELS: gcb-trigger-id=2252203c-6669-453c-8695-97bb646e92e4
 #    _TRIGGER_ID: 2252203c-6669-453c-8695-97bb646e92e4
