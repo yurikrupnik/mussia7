@@ -34,8 +34,6 @@ substitutions:
     _PLATFORM: managed
     _SERVICE_NAME: service1
     _DEPLOY_REGION: europe-west1
-#    _LABELS: gcb-trigger-id=2252203c-6669-453c-8695-97bb646e92e4
-#    _TRIGGER_ID: 2252203c-6669-453c-8695-97bb646e92e4
 
 images:
     - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
