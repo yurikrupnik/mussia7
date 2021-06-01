@@ -57,7 +57,7 @@ module.exports = {
         },
         {
             name: "Typedoc", // todo fix for github pages url when prod/dev
-            href: "http://localhost:63342/mussia6/docs/typedoc/index.html"
+            href: "http://localhost:63342/mussia7/docs/typedoc/index.html"
         },
         {
             name: "Swagger",
