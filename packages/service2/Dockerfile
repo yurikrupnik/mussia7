@@ -1,4 +1,4 @@
-FROM gcr.io/mussia6/lerna AS builder
+FROM gcr.io/mussia8/lerna AS builder
 ARG port=8080
 ENV PORT=$port
 

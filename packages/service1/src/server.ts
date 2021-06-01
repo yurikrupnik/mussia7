@@ -2,127 +2,34 @@ import express, { Router } from "express";
 import os from "os";
 import path from "path";
 import swaggerUi from "swagger-ui-express";
-// import * as swaggerJsdoc from "swagger-jsdoc";
-
-// const options = {
-//     definition: {
-//         openapi: "3.0.0",
-//         info: {
-//             title: "Hello World",
-//             version: "1.0.0"
-//         }
-//     },
-//     // apis: ["./src/routes*.js"] // files containing annotations as above
-//     apis: ["./src/server.ts"] // files containing annotations as above
-// };
-
-// console.log("swaggerJsdoc", swaggerJsdoc);
-
-// const openapiSpecification = swaggerJsdoc(options);
-// console.log("openapiSpecification", openapiSpecification);
+import api from "./api";
+import db from "./services/db";
 
 const app = express();
 
-function api() {
-    const route = Router();
-    /**
-     * @swagger
-     * /:
-     *   get:
-     *     tags:
-     *       - Service1
-     *     name: Find Service1
-     *     summary: Finds Service1 information
-     *     security:
-     *       - bearerAuth: []
-     *     consumes:
-     *       - application/json
-     *     produces:
-     *       - application/json
-     *     responses:
-     *       200:
-     *         description: A single project object
-     *       401:
-     *         description: No auth token
-     */
-    route.get("/", (req, res) => {
-        res.status(200).json({
-            message: "service 1 bb"
-        });
-    });
+function handleDatabaseUrl() {
+    // console.log("process.env.DATABASE_URL", process.env.DB_URL);
+    // console.log("process.env.DATABASE_PASSWORD", process.env.DB_PASSWORD);
+    // console.log("process.env.DB_USER", process.env.DB_USER);
+    const url = process.env.DB_URL;
+    if (!url) {
+        return "mongodb://localhost/mussia7";
+        // return "mongodb://db/mussia4";
+    }
 
-    /**
-     * @swagger
-     * /{id}:
-     *   get:
-     *     tags:
-     *       - Service1
-     *     name: Find service1 by id
-     *     summary: Finds billing information
-     *     security:
-     *       - bearerAuth: []
-     *     consumes:
-     *       - application/json
-     *     produces:
-     *       - application/json
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         schema:
-     *           type: string
-     *         required:
-     *           - id
-     *     responses:
-     *       200:
-     *         description: A single project object
-     *       401:
-     *         description: No auth token
-     */
-    route.get("/:id", (req, res) => {
-        res.status(200).send(`ok from get ${req.params.id}`);
-    });
+    // const isMlab = url.includes("mlab");
 
-    /**
-     * @swagger
-     * /:
-     *   post:
-     *     tags:
-     *       - Service1
-     *     name: Find service1 by id
-     *     summary: Finds billing information
-     *     security:
-     *       - bearerAuth: []
-     *     consumes:
-     *       - application/json
-     *     produces:
-     *       - application/json
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         schema:
-     *           type: string
-     *         required:
-     *           - id
-     *     responses:
-     *       200:
-     *         description: A single project object
-     *       401:
-     *         description: No auth token
-     */
-    route.post("/", (req, res) => {
-        res.status(200).send(`ok from post ${req.body}`);
-    });
-
-    route.delete("/:id", (req, res) => {
-        res.status(200).send(`ok from delete ${req.params.id}`);
-    });
-
-    return route;
+    return url.includes("cluster")
+        ? `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}${url}`
+        : url;
 }
+
+const databaseUrl = handleDatabaseUrl();
+console.log("databaseUrl", databaseUrl); // eslint-disable-line
 
 function swaggerUI(url: string) {
     // todo module
-    console.log('os.hostname()', os.hostname()) // eslint-disable-line
+    console.log("os.hostname()", os.hostname()); // eslint-disable-line
     const r = Router();
     r.get("/swagger", (req, res) => {
         res.header("Content-Type", "application/json");
@@ -144,23 +51,15 @@ function swaggerUI(url: string) {
 }
 
 // app.use(swaggerUI(`${host}:${port}`));
-app.use((req, res, next) => {
-    console.log("req.url", req.url);
-    console.log("req.hostname", req.hostname);
-    next();
-    // swaggerUI(req.hostname);
-});
-app.use(swaggerUI("http://localhost:5001"));
-
-app.use(api());
-// const route = Router();
-//
-// const route = app.use((req, res) => {
-//     res.json({
-//         allGood: false
-//     });
+// app.use((req, res, next) => {
+//     console.log("req.url", req.url);
+//     console.log("req.hostname", req.hostname);
+//     // app.use(swaggerUI("http://localhost:5001"));
+//     next();
+//     // next(swaggerUI(req.hostname));
 // });
-
-// app.listen(5000);
+app.use(swaggerUI("http://localhost:5000"));
+app.use(db(databaseUrl));
+app.use(api);
 
 export default app;

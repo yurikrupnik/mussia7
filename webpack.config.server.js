@@ -73,7 +73,7 @@ module.exports = (env, argv) => {
                         description: "Description"
                     }
                 },
-                apis: ["./src/server.ts"]
+                apis: ["./src/api/*.ts"]
             }),
             // new CopyPlugin({
             //     patterns: [{ from: path.join(cwd, "app.yml") }]

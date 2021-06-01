@@ -1,19 +1,6 @@
 import express, { Router } from "express";
 import path from "path";
 import swaggerUi from "swagger-ui-express";
-// import * as swaggerJsdoc from "swagger-jsdoc";
-
-// const options = {
-//     definition: {
-//         openapi: "3.0.0",
-//         info: {
-//             title: "Hello World",
-//             version: "1.0.0"
-//         }
-//     },
-//     // apis: ["./src/routes*.js"] // files containing annotations as above
-//     apis: ["./src/server.ts"] // files containing annotations as above
-// };
 
 const app = express();
 
