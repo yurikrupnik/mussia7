@@ -37,7 +37,7 @@ const ButtonGroup: React.FC<Props> = (props: Props) => {
     // return <Bu data={[]} />;
     return (
         <button type="button" onClick={onClick} className={styles.root}>
-            My Buttons s
+            My Buttons group
         </button>
     );
 };
